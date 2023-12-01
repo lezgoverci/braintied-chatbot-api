@@ -17,6 +17,8 @@ from tools.openai import create_run_and_get_last_message
 load_dotenv()
 
 assistant_id = os.getenv('CHATBOT_OPENAI_ASSISTANT_ID')
+server_host = os.getenv('CHATBOT_SERVER_HOST')
+server_port = os.getenv('CHATBOT_SERVER_PORT')
 
 app = Flask(__name__)
 
@@ -25,7 +27,7 @@ app.register_blueprint(messenger, url_prefix='/messenger')
 app.register_blueprint(chat, url_prefix='/chat')
 
 
-assistant_id = os.getenv('CHATBOT_OPENAI_ASSISTANT_ID')
+
 
 
 @app.route('/test', methods=['GET'])
@@ -36,4 +38,4 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost' ,debug=True, port=5002)
+    app.run(host=server_host ,debug=True, port=server_port)
