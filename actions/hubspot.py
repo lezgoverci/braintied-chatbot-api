@@ -2,7 +2,21 @@ import os
 from flask import jsonify
 import requests
 
-access_token = os.getenv('CHATBOT_HUBSPOT_ACCESS_TOKEN')
+access_token = None
+refresh_token = None
+
+def set_tokens(access, refresh):
+    global access_token, refresh_token
+    access_token = access
+    refresh_token = refresh
+
+def get_access_token():
+    global access_token
+    return access_token
+
+def get_refresh_token():
+    global refresh_token
+    return refresh_token
 
 def search_hubspot_contact_by_email(email):
 
