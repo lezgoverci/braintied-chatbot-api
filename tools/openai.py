@@ -67,6 +67,8 @@ def create_run_and_get_last_message(thread_id,assistant_id):
     retrieve_run_response_json = retrieve_run_response.json
 
     while retrieve_run_response_json['status'] != 'completed':
+        if retrieve_run_response_json['status'] == 'failed':
+               return 'failed'
         if retrieve_run_response_json['status'] == 'requires_action':
             required_action = retrieve_run_response_json['required_action']
             tool_calls = required_action['submit_tool_outputs']['tool_calls']
