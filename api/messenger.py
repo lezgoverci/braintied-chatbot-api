@@ -15,7 +15,6 @@ def messenger_handoff():
 def messenger_callback():
     if request.method == 'POST':
         # Handle the message
-        print(request.json)
         return 'Message received'
     elif request.method == 'GET':
         if(request.args.get('hub.verify_token') == 'vitality-rx'):

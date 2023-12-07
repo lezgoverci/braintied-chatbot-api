@@ -104,8 +104,6 @@ def retrieve_run(thread_id, run_id):
         headers={'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json', 'OpenAI-Beta':'assistants=v1'},
     )
 
-    print(response.json())
-
     if response.status_code != 200:
         return jsonify({'error': 'Error interacting with OpenAI API'}), 500
 
@@ -113,8 +111,6 @@ def retrieve_run(thread_id, run_id):
 
 def submit_function_outputs(thread_id, run_id, tool_outputs):
 
-
-    print(tool_outputs)
     if not thread_id:
         return jsonify({'error': 'Thread ID is required'}), 400
     if not run_id:

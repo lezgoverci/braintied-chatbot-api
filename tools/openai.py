@@ -80,7 +80,6 @@ def create_run_and_get_last_message(thread_id,assistant_id):
 
         retrieve_run_response = retrieve_run(thread_id,run_id)
         retrieve_run_response_json = retrieve_run_response.json
-        print(retrieve_run_response_json['status'])
 
 
     last_message = get_thread_last_message(thread_id)
