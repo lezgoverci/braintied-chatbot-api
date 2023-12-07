@@ -55,21 +55,21 @@ def verify_contact_identity(email, verification_code):
 
     return "verified"
 
-def create_new_contact_if_not_found(email, firstname, lastname):
+def create_new_contact_if_not_found(email, first_name, last_name):
     if not email:
         return 'email is required'
 
-    if not firstname:
+    if not first_name:
         return 'firstname is required'
 
-    if not lastname:
+    if not last_name:
         return 'lastname is required'
 
     data = {
         'properties': {
             'email': email,
-            'firstname': firstname,
-            'lastname': lastname
+            'firstname': first_name,
+            'lastname': last_name
         }
     }
 
@@ -86,8 +86,7 @@ def create_new_contact_if_not_found(email, firstname, lastname):
         return jsonify({'error': 'Error adding contact'}), 500
 
     output = response.json()
-    print(output)
-    output_string = output['results'][0]['properties']['firstname'] +" "+ output['results'][0]['properties']['lastname']
+    output_string = output['properties']['firstname'] +" "+ output['properties']['lastname']
 
     return output_string
 
