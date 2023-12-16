@@ -28,6 +28,8 @@ def oauth_callback():
         }
     )
 
+    print("response: ", response)
+
     if response.status_code != 200:
         return jsonify({'error': 'Error getting access token'}), 500
 
