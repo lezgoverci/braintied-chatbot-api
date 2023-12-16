@@ -46,4 +46,4 @@ def oauth_google():
 
 
 if __name__ == '__main__':
-    app.run(host=server_host ,debug=True, port=server_port)
+    app.run(host=server_host ,debug=False, port=server_port)
