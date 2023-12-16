@@ -8,3 +8,6 @@ pyproject.toml
 *.pyc
 credentials.json
 .DS_Store
+actions/__pycache__/
+api/__pycache__/
+tools/__pycache__/
