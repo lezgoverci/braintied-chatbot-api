@@ -5,3 +5,6 @@ __pycache__/
 .replit
 poetry.lock
 pyproject.toml
+*.pyc
+credentials.json
+.DS_Store

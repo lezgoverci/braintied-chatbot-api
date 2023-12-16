@@ -2,6 +2,7 @@
 import json
 from actions.hubspot import check_order_status, create_new_contact_if_not_found, get_available_appointment_slots, reschedule_telemed_appointment, retrieve_telemed_appointment_details, search_hubspot_contact_by_email, verify_contact_identity
 from actions.openai import add_thread_message, create_run, get_thread_last_message, retrieve_run, submit_function_outputs
+from tools.shopify import fetch_products
 
 
 def execute_action(thread_id, run_id, action):
@@ -46,6 +47,10 @@ def execute_action(thread_id, run_id, action):
          #check_order_status
          #result = check_order_status(arguments["order_id"])
          result = "order is shipped"
+    if(action["function"]["name"] == "get_products"):
+         products = fetch_products(arguments["product_count"])
+         print("products", products)
+         result = json.dumps(products)
 
     output = {
             'tool_call_id': action["id"],

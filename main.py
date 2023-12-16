@@ -2,6 +2,7 @@
 from flask import Flask, request, redirect
 from flask import jsonify
 from dotenv import load_dotenv
+from actions.google_calendar import authenticate_google
 from actions.openai import add_thread_message, create_run, create_thread, get_thread_last_message, retrieve_run
 
 
@@ -33,6 +34,13 @@ app.register_blueprint(chat, url_prefix='/chat')
 @app.route('/test', methods=['GET'])
 def test():
     return jsonify({'message': 'GET request received!'})
+
+@app.route('/oauth/google', methods=['GET', 'POST'])
+def oauth_google():
+    # Handle the request here
+    service = authenticate_google()
+    print(service)
+    return redirect('/')
 
 
 
